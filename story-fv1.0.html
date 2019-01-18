@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link rel="stylesheet" href="css/timelify.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <title>Fun 桌尚</title>
+    <style>
+        /* --------全版設定----- */
+        * {
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        body {
+            font-family: Verdana, 'Noto Sans TC', sans-serif;
+            color: #555;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        /* ---------樣式設定-------- */
+        .d-flex {
+            display: flex;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .m-width {
+            max-width: 960px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .border-radius {
+            border-radius: 3px;
+        }
+
+        .transition {
+            transition: .5s;
+        }
+
+        #wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            padding-bottom: 100px;
+            overflow: hidden;
+        }
+
+        /* ------------------------nav起始---- */
+        nav {
+            color: #555;
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logoline {
+            border-bottom: 2px solid #a50000;
+            flex-grow: 1;
+            margin-bottom: 46px;
+        }
+
+        nav>ul {
+            border-top: 2px solid #a50000;
+            margin-top: 72px;
+            display: flex;
+        }
+
+        nav>ul li {
+            margin: 10px 15px;
+        }
+
+        .linegroup {
+            width: 80px;
+            height: 100px;
+            padding: 5px;
+            padding-top: 50px;
+        }
+
+        nav>ul li:hover .downmenu1 {
+            transform: scaleY(1);
+        }
+
+        .downmenu1 {
+            width: 80px;
+            top: 20px;
+            left: -60px;
+            z-index: 1;
+            transform: scaleY(0);
+
+        }
+
+        .downmenu1 a {
+            color: #fff;
+            padding: 7px 8px;
+            display: block;
+            background: #a50000;
+            width: 80px;
+        }
+
+        .rwd_menu {
+            display: none;
+        }
+
+        @media screen and (max-width:1024px) {
+            .downmenu1 {
+                left: -20px;
+            }
+        }
+
+        @media screen and (max-width:576px) {
+            nav ul, nav li{
+                padding: 0;
+                margin: 0;
+            }
+            nav>ul {
+                display: none;
+            }
+
+            .linegroup {
+                display: none;
+            }
+
+            .rwd_menu {
+                display: block;
+                color: #000;
+                font-size: 20px;
+                padding: 10px;
+                margin-top: 15px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .rwd_menucontent {
+                width: 300px;
+                height: 320px;
+                background: #a500009f;
+                z-index: 15;
+                right: -400px;
+                top: 58px;
+            }
+
+            .rwd_menucontent ul li a {
+                display: block;
+                padding: 20px 0;
+                color: #fff;
+            }
+        }
+
+        /* ------------------header起始---- */
+        section {
+            align-items: center;
+            flex-direction: column;
+            margin-top: 60px;
+        }
+
+        .sec_height {
+            height: 80vh;
+        }
+
+        .storytitle {
+            margin-bottom: 20px;
+        }
+
+        .storytitle ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .storytitle ul li a {
+            padding: 10px;
+            display: block;
+            /* margin: 0 20px ; */
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .storytitle ul li a h2 {
+            padding-bottom: 7px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .storytitle ul li a:hover h2 {
+            border-bottom: 2px solid rgba(165, 0, 0, 0.7);
+        }
+
+        .story_content {
+            max-width: 960px;
+        }
+
+        .story_border {
+            padding: 30px 50px;
+            font-size: 20px;
+            line-height: 1.7;
+            background: #eee;
+            border: 1px solid #a50000;
+        }
+
+        .story_border b {
+            color: #a50000;
+            font-size: 30px;
+        }
+
+        .container h3 {
+            text-transform: uppercase;
+        }
+
+        #timeline_word {
+            display: none;
+        }
+
+        .rwd_center {
+            display: none;
+        }
+
+        .backtop {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #a50000;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+            cursor: pointer;
+        }
+
+        .backtop a {
+            display: block;
+        }
+
+        .backtop p {
+            color: #fff;
+        }
+
+        @media screen and (max-width:576px) {
+            .story_border {
+                font-size: 19px;
+            }
+
+            .normal {
+                display: none;
+            }
+
+            .rwd_center {
+                display:block;
+            }
+
+            .backtop {
+                width: 45px;
+                height: 45px;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            .backtop p {
+                font-size: 12px;
+            }
+
+        }
+
+        /* ------------------------section起始---- */
+
+        /* -------------------footer起始---- */
+        footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer p {
+
+            border-top: 1px solid #a50000;
+            padding-top: 10px;
+        }
+        @media screen and (max-width:375px){
+            #wrapper{
+                min-height: 130vh;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="m-width margin-auto">
+            <a href="indexv0.1.html"><img src="images/logo.jpg" alt=""></a>
+            <div class="logoline text-center"></div>
+            <ul>
+                <li class="position-relative">
+                    <a href="indexv0.1.html">Fun桌尚</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="story-fv1.0.html">桌遊故事</a>
+                </li>
+                <li class="position-relative">
+                    <a href="boardv1.0.html">店內桌遊</a>
+                </li>
+                <li><a href="mapv1.0.html">營業資訊</a></li>
+            </ul>
+            <div class="linegroup position-relative">
+                <img src="images/line-qrcode.jpg" alt="">
+                <!-- 加入Line粉絲群 -->
+            </div>
+            <div class="rwd_menu position-relative">
+                <a id="rwd_menu"><i class="fas fa-bars"></i></a>
+                <div class="rwd_menucontent position-absolute border-radius transition" id="rwd_menucontent">
+                    <ul>
+                        <li class="position-relative"><a href="indexv0.1.html">Fun桌尚</a></li>
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                        <li class="position-relative"><a href="story-fv1.0.html">桌遊故事</a></li>
+                        <li class="position-relative">
+                            <a href="boardv1.0.html">店內桌遊</a>
+                        </li>
+                        <li><a href="mapv1.0.html">營業資訊</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+        <header class="">
+
+        </header>
+        <section class="d-flex position-relative m-width margin-auto sec_height">
+            <div class="storytitle border-radius">
+                <ul class="d-flex">
+                    <li id="story_fun"><a class="border-radius">
+                            <h2>Fun故事</h2>
+                        </a></li>
+                    <div class="line margin-auto"></div>
+                    <li id="story_board"><a class="border-radius">
+                            <h2>桌遊故事</h2>
+                        </a></li>
+
+                </ul>
+            </div>
+            <div class="story_content" id="funstory_word">
+                <div class="story_border border-radius">
+                    <p><b>桌遊</b>，大學時代時，社團的一位學長帶來，這時是我初次接觸，雖然那是一款不簡單的合作遊戲，但是我們仍玩得不亦樂乎。<br>
+                        <br>
+                        但隨著3C遊戲的發展，間接把人綁在3C前面，我相信除了戶外活動，桌遊讓人與人可以直接面對面的交流，不需要依賴3C就能找到話題與共通點，也希望讓更多的人，遠離3C，在桌遊的世界找回我們以前純樸的歡樂！<br>
+                        <br>
+                        為了更加完善各位的桌遊體驗，Fun桌尚仍需要更多的建議，請不要吝嗇你的批評。若有更多的建議請透過FB粉絲團留言，謝謝！</p>
+                </div>
+            </div>
+            <div class="story_content" id="timeline_word">
+                <div class="story_border border-radius">
+                    <div class="normal">
+                    <div class="container">
+                        <div class="timeline">
+                            <h2>桌遊是</h2>
+                            <ul class="timeline-items">
+                                <li class="is-hidden timeline-item centered">
+                                    <!-- Normal block, positionned to the left -->
+                                    <h3>國外家餘戶曉的桌上遊戲(Board Games)</h3>
+                                    <hr>
+                                    <p>在歐美國家的家庭時間中，桌上遊戲是不可缺少的要素。
+                                        不論是朋友聚會或是家人同樂，任何聯誼性質的活動都能馬上炒熱氣氛，
+                                        <br>
+                                        台灣近年也開始興起風潮。桌遊多元的遊戲類型、豐富的故事主題，以及精美的配件，
+                                        馬上就能吸引大家的目光。從3歲到99歲都可以輕鬆進入桌遊的世界。
+                                        <br>
+                                        其發展演化可以推至5000多年前....
+                                    </p>
+                                    <hr>
+                                </li>
+                            </ul>
+                            <h2>桌遊近代</h2>
+                            <ul class="timeline-items">
+                                <li class="is-hidden timeline-item centered">
+                                    <h3>2018...</h3>
+                                    <hr>
+                                    <p>
+                                        台灣桌遊發展至今已經有許多桌遊店成立，但仍有許多民眾不清楚「桌遊」為何？除了桌遊的發展史以外，更應該了解桌遊的用途，從3歲幼兒的認知記憶遊戲開始，到複雜化的策略遊戲，還有合作挑戰的角色扮演遊戲，桌遊真的是一個很棒的學習途徑，更重要的是，桌遊可以透過一邊遊戲一邊學習，能以快樂的心情學習。
+                                    </p>
+                                    <hr>
+                                </li>
+                            </ul>
+
+                            <h2>桌遊興盛時期</h2>
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item">
+                                        <h3>18、19世紀</h3>
+                                        <hr>
+                                        <p>工業革命發生後，大量的機器取代人力，讓一般大眾增加了休閒娛樂的時間。但由於當時的印刷技術成本過高，非一般中產階段所能負擔，因而無法普及流行。</p>
+
+                                        <p>到了1860年，米爾頓‧布萊德里(Milton
+                                            Bradley)開發出平版印刷的使用，使得印刷技術大為進步。不僅使彩色印刷製品的成本大為降低，同時也讓印刷生產的速度大為提昇。自此以後，桌上遊戲便開始萌發成長，並逐漸轉為興盛。</p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item inverted">
+                                        <h3>西元1843年</h3>
+                                        <hr>
+                                        <p>美國第一個製造的圖板遊戲「幸福大廈」(The Mansion of
+                                            Happiness)正式發行。西元1850年左右，中國的「麻將」(Mahjong)開始興盛。</p>
+                                        <p>西元1854年左右，英國人發明「Hoppity」遊戲，到了西元1884年左右，美國人根據「Hoppity」遊戲的靈感，創造出正方跳棋(halma)遊戲，並成為中國跳棋(Chinese
+                                            Checkers)的前身。</p>
+                                    </li>
+                                    <li class="is-hidden timeline-item">
+                                        <h3>西元1933年</h3>
+                                        <hr>
+                                        <p>美國人查理斯達洛(Charles
+                                            Darrow)在大西洋城渡假時，發明了「地產大亨」(Monopoly)圖板遊戲，圖板上所繪的街道皆取自於新澤西州的大西洋街道。之後，查理斯達洛將遊戲授權給美國帕克兄弟(Parker
+                                            Brothers)公司，並於1935年正式發行。由於此時正處於美國經濟大蕭條時期，推出後廣受歡迎，並在世界各地陸續出現各種國家的版本，成為近代最具代表性的圖板遊戲。</p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item inverted">
+                                        <h3>西元1957年</h3>
+                                        <hr>
+                                        <p>美國帕克兄弟公司推出「戰國風雲」(Risk)
+                                            圖板遊戲，成為戰棋遊戲的代表。由於規則簡單，較易上手，至今仍受到許多玩家們的喜愛。近入1980年代後，德式風格圖板遊戲(German-style
+                                            board
+                                            game)開始興起，帶給桌遊玩家們進行遊戲時完全不同的感受。相較於美式桌遊強調的機運及競爭，德式桌遊更重視策略思考及人際互動，也讓桌上遊戲不僅只供休閒娛樂之用，更能成為重要的社交活動。</p>
+                                        <hr>
+                                    </li>
+                                </ul>
+                                <h2>桌遊起源</h2>
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item">
+                                        <!-- Normal block, positionned to the right  -->
+                                        <h3>西元前100年</h3>
+                                        <hr>
+                                        <p>羅馬學者的著作中出現棋盤遊戲的記載，為最早出現羅馬棋的文獻。西元200年左右，波斯雙陸棋傳入中國。西元400年左右，「桌棋」(Tafl
+                                            game)遊戲已出現在北歐地區。</p>
+                                        <p><span>到了西元1100年左右，法國南部已出現西洋棋盤，並使用特製的棋子進行遊戲。</span></p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item inverted">
+                                        <!-- Centered block, positionned in the middle -->
+                                        <h3>西元前1500年</h3>
+                                        <hr>
+                                        <p>中國商朝出現「六博」(Liubo)的棋盤遊戲。西元前650年左右，印度出現「恰圖蘭卡」(Chaturanga)的棋盤遊戲，對後代的棋類遊戲(包括中國象棋(Xiangqi)、西洋棋(Chess)、日本將棋(Shogi)、朝鮮將棋(Janggi)等)產生極大的影響。
+                                        </p>
+                                        <p>西元前500年左右，佛像遊戲列表提及圖板遊戲的部份達8~10行。到了西元前400年左右，「圍棋」(Go)已出現在中國的左傳記載中。</p>
+                                        <hr>
+                                    </li>
+                                </ul>
+                                <!-- <h2>2015</h2> -->
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item">
+                                        <h3>西元前3000多年</h3>
+                                        <hr>
+                                       
+                                        <p>西元前3500年左右，在古埃及王朝陵墓發現的「賽尼特棋」(Julius
+                                            Perdana)為目前發現最古老的遊戲。西元前3000年左右，古埃及王朝出現利用獅子型狀的遊戲配件所進行的棋盤遊戲，伊朗亦有「波斯雙陸棋」(Backgammon)出現。</p>
+                                        <p>英國考古學家則在美索不達米亞古城中發現皇家圖板遊戲的遺跡，推估時期約為西元前2560年左右。</p>
+                                        <hr>
+                                        
+                                    </li>
+                                </ul>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="rwd_center">
+                    <div class="container ">
+                        <div class="timeline">
+                            <h2>桌遊是</h2>
+                            <ul class="timeline-items">
+                                <li class="is-hidden timeline-item centered">
+                                    <!-- Normal block, positionned to the left -->
+                                    <h3>國外家餘戶曉的桌上遊戲(Board Games)</h3>
+                                    <hr>
+                                    <p>在歐美國家的家庭時間中，桌上遊戲是不可缺少的要素。
+                                        不論是朋友聚會或是家人同樂，任何聯誼性質的活動都能馬上炒熱氣氛，
+                                        <br>
+                                        台灣近年也開始興起風潮。桌遊多元的遊戲類型、豐富的故事主題，以及精美的配件，
+                                        馬上就能吸引大家的目光。從3歲到99歲都可以輕鬆進入桌遊的世界。
+                                        <br>
+                                        其發展演化可以推至5000多年前....
+                                    </p>
+                                    <hr>
+                                </li>
+                            </ul>
+                            <h2>桌遊近代</h2>
+                            <ul class="timeline-items">
+                                <li class="is-hidden timeline-item centered">
+                                    <h3>2018...</h3>
+                                    <hr>
+                                    <p>
+                                        台灣桌遊發展至今已經有許多桌遊店成立，但仍有許多民眾不清楚「桌遊」為何？除了桌遊的發展史以外，更應該了解桌遊的用途，從3歲幼兒的認知記憶遊戲開始，到複雜化的策略遊戲，還有合作挑戰的角色扮演遊戲，桌遊真的是一個很棒的學習途徑，更重要的是，桌遊可以透過一邊遊戲一邊學習，能以快樂的心情學習。
+                                    </p>
+                                    <hr>
+                                </li>
+                            </ul>
+
+                            <h2>桌遊興盛時期</h2>
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item centered">
+                                        <h3>18、19世紀</h3>
+                                        <hr>
+                                        <p>工業革命發生後，大量的機器取代人力，讓一般大眾增加了休閒娛樂的時間。但由於當時的印刷技術成本過高，非一般中產階段所能負擔，因而無法普及流行。</p>
+
+                                        <p>到了1860年，米爾頓‧布萊德里(Milton
+                                            Bradley)開發出平版印刷的使用，使得印刷技術大為進步。不僅使彩色印刷製品的成本大為降低，同時也讓印刷生產的速度大為提昇。自此以後，桌上遊戲便開始萌發成長，並逐漸轉為興盛。</p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item centered">
+                                        <h3>西元1843年</h3>
+                                        <hr>
+                                        <p>美國第一個製造的圖板遊戲「幸福大廈」(The Mansion of
+                                            Happiness)正式發行。西元1850年左右，中國的「麻將」(Mahjong)開始興盛。</p>
+                                        <p>西元1854年左右，英國人發明「Hoppity」遊戲，到了西元1884年左右，美國人根據「Hoppity」遊戲的靈感，創造出正方跳棋(halma)遊戲，並成為中國跳棋(Chinese
+                                            Checkers)的前身。</p>
+                                    </li>
+                                    <li class="is-hidden timeline-item centered">
+                                        <h3>西元1933年</h3>
+                                        <hr>
+                                        <p>美國人查理斯達洛(Charles
+                                            Darrow)在大西洋城渡假時，發明了「地產大亨」(Monopoly)圖板遊戲，圖板上所繪的街道皆取自於新澤西州的大西洋街道。之後，查理斯達洛將遊戲授權給美國帕克兄弟(Parker
+                                            Brothers)公司，並於1935年正式發行。由於此時正處於美國經濟大蕭條時期，推出後廣受歡迎，並在世界各地陸續出現各種國家的版本，成為近代最具代表性的圖板遊戲。</p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item centered">
+                                        <h3>西元1957年</h3>
+                                        <hr>
+                                        <p>美國帕克兄弟公司推出「戰國風雲」(Risk)
+                                            圖板遊戲，成為戰棋遊戲的代表。由於規則簡單，較易上手，至今仍受到許多玩家們的喜愛。近入1980年代後，德式風格圖板遊戲(German-style
+                                            board
+                                            game)開始興起，帶給桌遊玩家們進行遊戲時完全不同的感受。相較於美式桌遊強調的機運及競爭，德式桌遊更重視策略思考及人際互動，也讓桌上遊戲不僅只供休閒娛樂之用，更能成為重要的社交活動。</p>
+                                        <hr>
+                                    </li>
+                                </ul>
+                                <h2>桌遊起源</h2>
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item centered">
+                                        <!-- Normal block, positionned to the right  -->
+                                        <h3>西元前3000多年</h3>
+                                        <hr>
+                                        <p>西元前3500年左右，在古埃及王朝陵墓發現的「賽尼特棋」(Julius
+                                            Perdana)為目前發現最古老的遊戲。西元前3000年左右，古埃及王朝出現利用獅子型狀的遊戲配件所進行的棋盤遊戲，伊朗亦有「波斯雙陸棋」(Backgammon)出現。</p>
+                                        <p>英國考古學家則在美索不達米亞古城中發現皇家圖板遊戲的遺跡，推估時期約為西元前2560年左右。</p>
+                                        <hr>
+                                    </li>
+                                    <li class="is-hidden timeline-item centered">
+                                        <!-- Centered block, positionned in the middle -->
+                                        <h3>西元前1500年</h3>
+                                        <hr>
+                                        <p>中國商朝出現「六博」(Liubo)的棋盤遊戲。西元前650年左右，印度出現「恰圖蘭卡」(Chaturanga)的棋盤遊戲，對後代的棋類遊戲(包括中國象棋(Xiangqi)、西洋棋(Chess)、日本將棋(Shogi)、朝鮮將棋(Janggi)等)產生極大的影響。
+                                        </p>
+                                        <p>西元前500年左右，佛像遊戲列表提及圖板遊戲的部份達8~10行。到了西元前400年左右，「圍棋」(Go)已出現在中國的左傳記載中。</p>
+                                        <hr>
+                                    </li>
+                                </ul>
+                                <!-- <h2>2015</h2> -->
+                                <ul class="timeline-items">
+                                    <li class="is-hidden timeline-item centered">
+                                        <h3>西元前100年</h3>
+                                        <hr>
+                                        <p>羅馬學者的著作中出現棋盤遊戲的記載，為最早出現羅馬棋的文獻。西元200年左右，波斯雙陸棋傳入中國。西元400年左右，「桌棋」(Tafl
+                                            game)遊戲已出現在北歐地區。</p>
+
+                                        <p><span>到了西元1100年左右，法國南部已出現西洋棋盤，並使用特製的棋子進行遊戲。</span></p>
+                                        <hr>
+                                    </li>
+                                </ul>                            
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="backtop">
+                <p class="text-center">↑<br>Top</p>
+            </div>
+        </section>
+        <footer class="text-center position-absolute">
+            <p>2018 © Rita Jhong </p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery.timelify.js"></script>
+    <script>
+        $(".backtop").click(function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 700);
+        });
+        $("#story_board").click(function () {
+            $("#funstory_word").css("display", "none");
+            $("section").removeClass("sec_height");
+            $("#timeline_word").css("display", "block");
+        });
+        $("#story_fun").click(function () {
+            $("#funstory_word").css("display", "block");
+            $("section").addClass("sec_height");
+            $("#timeline_word").css("display", "none");
+        });
+        $('.timeline').timelify();
+        $("#rwd_menu").click(function(){
+            var menusli = $(".rwd_menucontent").css("right","-300px");
+            var menuWidth = $(".rwd_menucontent").width();
+            // console.log("menuWidth");
+            if( menuWidth == 200 ){
+                $(".rwd_menucontent").css("right","0").css("width","199.9px");
+            }else{
+                menusli.css("width","200px");
+            }
+        });
+    </script>
+</body>
+
+</html>

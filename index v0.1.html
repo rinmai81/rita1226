@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun 桌尚</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <style>
+        /* --------全版設定----- */
+        *{
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        body {
+            font-family: Verdana, 'Noto Sans TC', sans-serif;
+            color: #555;
+        }
+
+        /* ---------樣式設定-------- */
+        .d-flex {
+            display: flex;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .m-width {
+            max-width: 960px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .border-radius {
+            border-radius: 3px;
+        }
+
+        .transition {
+            transition: .5s;
+        }
+
+        /* ------------------------nav起始---- */
+        nav {
+            color: #555;
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logoline {
+            border-bottom: 2px solid #a50000;
+            flex-grow: 1;
+            margin-bottom: 46px;
+        }
+
+        nav>ul {
+            border-top: 2px solid #a50000;
+            margin-top: 72px;
+        }
+
+        nav>ul li {
+            margin: 10px 15px;
+        }
+
+        .linegroup {
+            width: 80px;
+            height: 100px;
+            padding: 5px;
+            padding-top: 50px;
+        }
+
+        nav>ul li:hover .downmenu1{
+            transform: scaleY(1);
+        }
+        .downmenu1 {
+            width: 80px;
+            top: 15px;
+            left: -60px;
+            z-index: 1;
+            transform: scaleY(0);
+
+        }
+
+        .downmenu1 a {
+            color: #fff;
+            padding: 7px 8px;
+            display: block;
+            background: #a50000;
+            width: 80px;
+        }
+        /* ------------------header起始---- */
+        header {
+            margin-top: 10px;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        header img {
+            filter: brightness(.7);
+        }
+
+        /* ------------------------section起始---- */
+        .news {
+            margin-top: 50px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .line {
+            width: 50px;
+            border-top: 3px solid #a50000;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+
+        .news1 {
+            width: 300px;
+            height: 300px;
+            margin: 10px 30px;
+            background: rgba(0, 0, 0, .8);
+            overflow: hidden;
+        }
+
+        .news1:hover img {
+            opacity: .8;
+        }
+
+        .news1:hover h3 {
+            transform: translateY(-200px);
+        }
+
+        .news1 img {
+            max-width: 100%;
+            object-fit: cover;
+            opacity: .2;
+            filter: contrast(.5);
+        }
+
+        .news1 h3 {
+            color: #fff;
+            position: absolute;
+            width: 300px;
+        }
+
+        .news_outside {
+            justify-content: center;
+        }
+
+        .more {
+            text-align: right;
+            font-size: 20px;
+            padding: 10px 0;
+        }
+
+        /* -------------------footer起始---- */
+        footer p {
+            border-top: 1px solid #a50000;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="m-width margin-auto">
+            <a href="index v0.1.html"><img src="images/logo.jpg" alt=""></a>
+            <div class="logoline text-center"></div>
+            <ul class="d-flex">
+                <li class="position-relative">
+                    <a href="index v0.1.html">Fun桌尚</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="">最新消息</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="">桌遊故事</a>
+                    <ul class="downmenu1 position-absolute transition downmenu2">
+                        <li><a href="">Fun故事</a></li>
+                        <li><a href="">桌遊故事</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="">店內桌遊</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="">最新消息</a></li>
+                    </ul>
+                </li>
+                <li><a href="">營業資訊</a></li>
+            </ul>
+            <div class="linegroup position-relative">
+                <img src="images/line-qrcode.jpg" alt="">
+                <!-- 加入Line粉絲群 -->
+            </div>
+
+
+        </nav>
+        <header class="text-center">
+            <img src="images/slider1.jpg" alt="">
+        </header>
+        <section class="m-width margin-auto">
+            <div class="text-center news">
+                <h2>最新消息</h2>
+                <div class="line margin-auto"></div>
+            </div>
+            <div class="news_outside d-flex">
+                <div class="news1 text-center border-radius position-relative">
+                    <h3 class="transition">FUN桌尚跨年預約公告</h3>
+                    <a href=""><img class="transition" src="images/news2zoom.jpg" alt=""></a>
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">Fun桌尚包場公告<br>
+                        12/1(六)14:00-17:00
+                    </h3>
+                    <a href=""><img class="transition" src="images/news1zoom.jpg" alt=""></a>
+
+                </div>
+            </div>
+            <a href="">
+                <div class="more">more...</div>
+            </a>
+        </section>
+        <footer class="text-center">
+            <p>2018 © Rita Jhong </p>
+        </footer>
+    </div>
+</body>
+
+</html>

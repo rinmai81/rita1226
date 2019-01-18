@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <title>Story_F</title>
+    <style>
+        /* --------全版設定----- */
+        * {
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        body {
+            font-family: Verdana, 'Noto Sans TC', sans-serif;
+            color: #555;
+        }
+
+        /* ---------樣式設定-------- */
+        .d-flex {
+            display: flex;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .m-width {
+            max-width: 960px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .border-radius {
+            border-radius: 3px;
+        }
+
+        .transition {
+            transition: .5s;
+        }
+        /* ------------------------nav起始---- */
+        nav {
+            color: #555;
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logoline {
+            border-bottom: 2px solid #a50000;
+            flex-grow: 1;
+            margin-bottom: 46px;
+        }
+
+        nav>ul {
+            border-top: 2px solid #a50000;
+            margin-top: 72px;
+        }
+
+        nav>ul li {
+            margin: 10px 15px;
+        }
+
+        .linegroup {
+            width: 80px;
+            height: 100px;
+            padding: 5px;
+            padding-top: 50px;
+        }
+
+        nav>ul li:hover .downmenu1 {
+            transform: scaleY(1);
+        }
+
+        .downmenu1 {
+            width: 80px;
+            top: 20px;
+            left: -60px;
+            z-index: 1;
+            transform: scaleY(0);
+
+        }
+
+        .downmenu1 a {
+            color: #fff;
+            padding: 7px 8px;
+            display: block;
+            background: #a50000;
+            width: 80px;
+        }
+
+        /* ------------------header起始---- */
+        header {
+            align-items: center;
+            flex-direction: column;
+            margin-top: 60px ;
+            height: 74vh;
+        }
+
+        .storytitle {
+            margin-bottom: 20px;
+        }
+
+        .storytitle ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .storytitle ul li a {
+            padding: 10px;
+            display: block;
+            /* margin: 0 20px ; */
+            margin: 0 10px;
+        }
+
+        .storytitle ul li a:hover {
+            background: rgba(165, 0, 0, 0.7);
+        }
+
+        .story_content {
+            max-width: 960px;
+            height: 430px;
+        }
+        .story_border{
+            padding: 30px 50px;
+            font-size: 20px;
+            line-height: 1.7 ;
+            background: #eee;
+            border: 1px solid #a50000;
+        }
+        .story_border b{
+            color: #a50000;
+            font-size: 30px;
+        }
+        /* ------------------------section起始---- */
+
+        /* -------------------footer起始---- */
+        footer{
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            border-top: 1px solid #a50000;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper position-relative">
+        <nav class="m-width margin-auto position-relative">
+            <a href="index v0.1.html"><img src="images/logo.jpg" alt=""></a>
+            <div class="logoline text-center"></div>
+            <ul class="d-flex">
+                <li class="position-relative">
+                    <a href="index v0.1.html">Fun桌尚</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="">最新消息</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="">桌遊故事</a>
+                    <ul class="downmenu1 position-absolute transition downmenu2">
+                        <li><a href="">Fun故事</a></li>
+                        <li><a href="">桌遊故事</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="">店內桌遊</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="">最新消息</a></li>
+                    </ul>
+                </li>
+                <li><a href="">營業資訊</a></li>
+            </ul>
+            <div class="linegroup position-relative">
+                <img src="images/line-qrcode.jpg" alt="">
+                <!-- 加入Line粉絲群 -->
+            </div>
+
+
+        </nav>
+        <header class="d-flex position-relative">
+            <div class="storytitle border-radius">
+                <ul class="d-flex">
+                    <li><a href="" class="transition border-radius">Fun故事</a></li>
+                    <li><a href="" class="transition border-radius">桌遊故事</a></li>
+                </ul>
+            </div>
+            <div class="story_content">
+                <div class="story_border border-radius">
+                    <p><b>桌遊</b>，大學時代時，社團的一位學長帶來，這時是我初次接觸，雖然那是一款不簡單的合作遊戲，但是我們仍玩得不亦樂乎。<br>
+                        <br>
+                        但隨著3C遊戲的發展，間接把人綁在3C前面，我相信除了戶外活動，桌遊讓人與人可以直接面對面的交流，不需要依賴3C就能找到話題與共通點，也希望讓更多的人，遠離3C，在桌遊的世界找回我們以前純樸的歡樂！<br>
+                        <br>
+                        為了更加完善各位的桌遊體驗，Fun桌尚仍需要更多的建議，請不要吝嗇你的批評。若有更多的建議請透過FB粉絲團留言，謝謝！</p>
+                </div>
+            </div>
+        </header>
+        <section class="">
+
+        </section>
+        <footer class="position-relative text-center">
+            <p>2018 © Rita Jhong </p>
+        </footer>
+    </div>
+</body>
+
+</html>

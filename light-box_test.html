@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <!-- <link href="css/popUpCss.css" rel="stylesheet">     -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+
+    <title>店內桌遊 測試版</title>
+    <style>
+        /* --------全版設定----- */
+        * {
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        body {
+            font-family: Verdana, 'Noto Sans TC', sans-serif;
+            color: #555;
+        }
+        html, body {
+            height: 100%;
+        }
+        #wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            padding-bottom: 250px;
+            overflow: hidden;
+        }
+        /* ---------樣式設定-------- */
+        .d-flex {
+            display: flex;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .m-width {
+            max-width: 960px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .border-radius {
+            border-radius: 3px;
+        }
+
+        .transition {
+            transition: .5s;
+        }
+
+        /* ------------------------nav起始---- */
+        nav {
+            color: #555;
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logoline {
+            border-bottom: 2px solid #a50000;
+            flex-grow: 1;
+            margin-bottom: 46px;
+        }
+
+        nav>ul {
+            border-top: 2px solid #a50000;
+            margin-top: 72px;
+            display: flex;
+        }
+
+        nav>ul li {
+            margin: 10px 15px;
+        }
+
+        .linegroup {
+            width: 80px;
+            height: 100px;
+            padding: 5px;
+            padding-top: 50px;
+        }
+
+        nav>ul li:hover .downmenu1 {
+            transform: scaleY(1);
+        }
+
+        .downmenu1 {
+            width: 80px;
+            top: 20px;
+            left: -60px;
+            z-index: 1;
+            transform: scaleY(0);
+
+        }
+
+        .downmenu1 a {
+            color: #fff;
+            padding: 7px 8px;
+            display: block;
+            background: #a50000;
+            width: 80px;
+        }
+        .rwd_menu {
+            display: none;
+        }
+        @media screen and (max-width:1024px){
+            .downmenu1 {
+            left: -20px;
+            }
+        }
+        
+        @media screen and (max-width:576px) {
+            nav>ul {
+                display: none;
+            }
+            nav ul, nav li{
+                margin: 0;
+                padding: 0;
+            }
+
+            .linegroup {
+                display: none;
+            }
+
+            .rwd_menu {
+                display: block;
+                color: #000;
+                font-size: 20px;
+                padding: 10px;
+                margin-top: 15px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .rwd_menucontent {
+                width: 300px;
+                height: 320px;
+                background: #a500009f;
+                z-index: 15;
+                right: -400px;
+                top: 58px;
+            }
+
+            .rwd_menucontent ul li a {
+                display: block;
+                padding: 20px 0;
+                color: #fff;
+            }
+        }
+        /* ------------------header起始---- */
+
+        /* ------------------------section起始---- */
+        section {
+            margin-top: 60px;
+            /* height: 74vh; */
+        }
+        #board1{
+            text-align: center;
+        }
+        #board1 img{
+            width:80%;
+            height: 80%;
+        }
+        #board1 h3{
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        #board1 p{
+            font-size: 13px;
+            text-align: left;
+        }
+        #board1 p a{
+            text-decoration: underline;
+        }
+        .board_content ul {
+            justify-content: center;
+            /* align-items: center; */
+            flex-wrap: wrap;
+        }
+
+        .board_content ul li {
+            width: 280px;
+            height: 280px;
+            border: 1px solid #a50000;
+            padding: 20px 0px 20px;
+            text-align: center;
+            margin: 7px;
+        }
+
+        .board_content ul li img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .board_content p {
+            margin-top: 30px;
+        }
+        .backtop{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background:#a50000;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: fixed ;
+            bottom: 100px;
+            right:100px;
+            cursor: pointer ;
+            
+        }
+        @media screen and (max-width:576px){
+            .backtop {
+                width: 45px;
+                height: 45px;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            .backtop p {
+                font-size: 12px;
+            }
+        }
+        /* -------------------footer起始---- */
+        footer {
+            width: 100%;
+            bottom: 0;
+        }
+        footer p {
+            border-top: 1px solid #a50000;
+            padding-top: 10px;
+        }
+        /* ------------------光箱測試區-------- */
+        .light_box_wrap{
+            display: none;
+        }
+        .light_box_wrap{
+            position: fixed;
+            left:0;
+            top:0;
+            width:100%;
+            bottom:0;
+            z-index: 99;
+            background: rgba(0,0,0,.7);
+        }
+        .light_wrap{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 99;
+            background: rgba(0,0,0,.7); */
+        }
+
+        .light_inside{
+            width: 40rem;
+            height: 50rem;
+            background: #fff;
+            color: #000;
+            text-align: center;
+        }
+        .light_inside img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="m-width margin-auto">
+            <a href="indexv0.1.html"><img src="images/logo.jpg" alt=""></a>
+            <div class="logoline text-center"></div>
+            <ul>
+                <li class="position-relative">
+                    <a href="indexv0.1.html">Fun桌尚</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="story-fv1.0.html">桌遊故事</a>
+                </li>
+                <li class="position-relative">
+                    <a href="boardv1.0.html">店內桌遊</a>
+                </li>
+                <li><a href="mapv1.0.html">營業資訊</a></li>
+            </ul>
+            <div class="linegroup position-relative">
+                <img src="images/line-qrcode.jpg" alt="">
+                <!-- 加入Line粉絲群 -->
+            </div>
+            <div class="rwd_menu position-relative">
+                <a id="rwd_menu"><i class="fas fa-bars"></i></a>
+                <div class="rwd_menucontent position-absolute border-radius transition" id="rwd_menucontent">
+                    <ul>
+                        <li class="position-relative"><a href="indexv0.1.html">Fun桌尚</a></li>
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                        <li class="position-relative"><a href="story-fv1.0.html">桌遊故事</a></li>
+                        <li class="position-relative">
+                            <a href="boardv1.0.html">店內桌遊</a>
+                        </li>
+                        <li><a href="mapv1.0.html">營業資訊</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+        <header class="">
+
+        </header>
+        <section class="position-relative margin-auto m-width">
+            <div class="text-center border-radius">
+                <ul class="">
+                    <li><a href="" class="transition border-radius"><h2>店內桌遊</h2></a></li>
+                </ul>
+                <div class="line margin-auto"></div>
+            </div>
+            <div class="d-flex board_content">
+                <ul class="d-flex">
+                    <li>
+                        <a href="#" 
+                        class="briefPopUp" 
+                        data-briefPopUp-id="board1"><img class="lazyload" data-src="images/board1.jpg" alt=""></a>
+                        <p>Yggdrasil<br>
+                            世界樹</p>
+                    </li>
+                    <li>
+                        <a href="images/board2.jpg" class="light_click"><img class="lazyload" data-src="images/board2.jpg" alt=""></a>
+                        <p>Samllworld underground<br>
+                            小世界地底版</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board3.jpg" alt=""></a>
+                        <p>Shadows Over Camelot<br>
+                            圓桌武士</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board4.jpg" alt=""></a>
+                        <p>Blood Rage<br>
+                            血色狂怒</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board5.jpg" alt=""></a>
+                        <p>DORASURE<br>
+                            獵龍戰記</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board6.jpg" alt=""></a>
+                        <p>GeistesBlitz<br>
+                            閃靈快手</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board7.jpg" alt=""></a>
+                        <p>Lords of Waterdeep<br>
+                            深水城領主 </p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board8.jpg" alt=""></a>
+                        <p>Discoveries<br>
+                            發現之旅</p>
+                    </li>
+                    <li>
+                        <a href=""><img class="lazyload" data-src="images/board9.jpg" alt=""></a>
+                        <p>TRAJAN<br>
+                            圖拉真</p>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="backtop d-flex">
+                <p class="text-center">↑<br>Top</p>
+             </div>
+        </section>
+        <footer class="text-center position-absolute">
+            <p>2018 © Rita Jhong </p>
+        </footer>
+    </div>
+    <!-- <div id="board1" class="briefPopUp-modal">
+        <h3>Yggdrasil<br>
+            世界樹</h3>
+        <p>作者：Cédric Lefebvre、Fabrice Rabellino<br>
+                中文名稱：世界樹<br>
+                遊戲人數：1~6人<br>
+                遊戲時間：90分鐘<br>
+                適合年齡：13歲以上<br>
+                語言需求：遊戲中無需使用文字<br>
+                牌套尺寸：4.5x7(34張)、6.5x9(52張)<br>
+                BGG連結：<a href="http://www.boardgamegeek.com/boardgame/71671/yggdrasil" target="new">http://www.boardgamegeek.com/boardgame/71671/yggdrasil</a></p>
+        <img src="images/board1.jpg" alt="">
+        <a class="close-briefPopUp-modal">&#215;</a>
+      </div> -->
+    
+      
+
+    <div class="light_box_wrap">
+            <div class="light_wrap">
+                    <div class="light_inside">
+                        
+                    </div>
+                </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+    <!-- <script src="js/jquery.popup.js"></script> -->
+
+    <script>
+    $(".backtop").click(function(){
+            $('html,body').animate({
+            scrollTop: 0
+        }, 700);
+        });
+    lazyload();
+    $("#rwd_menu").click(function(){
+            var menusli = $(".rwd_menucontent").css("right","-300px");
+            var menuWidth = $(".rwd_menucontent").width();
+            // console.log("menuWidth");
+            if( menuWidth == 200 ){
+                $(".rwd_menucontent").css("right","0").css("width","199.9px");
+            }else{
+                menusli.css("width","200px");
+            }
+        });
+        $(".light_click").on("click", function(e){
+            e.preventDefault();
+
+            var url = $(this).attr("href");
+            var image = $('<img>');
+            
+            image.attr("src",url);
+            $(".light_inside").html(image);
+            $(".light_box_wrap").fadeIn(400);
+
+            $(".light_box_wrap").click(function(){
+                $(this).fadeOut(400);
+            });
+            
+        });
+    </script>
+</body>
+
+</html>

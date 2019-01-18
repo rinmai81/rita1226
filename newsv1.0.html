@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fun 桌尚</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="icon" type="image/png" href="images/logo.jpg">
+    <link href="css/popUpCss.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+
+    <style>
+        /* --------全版設定----- */
+        * {
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        body {
+            font-family: Verdana, 'Noto Sans TC', sans-serif;
+            color: #555;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        #wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            padding-bottom: 100px;
+            overflow: hidden;
+        }
+
+        /* ---------樣式設定-------- */
+        .d-flex {
+            display: flex;
+        }
+
+        .margin-auto {
+            margin: 0 auto;
+        }
+
+        .m-width {
+            max-width: 960px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .border-radius {
+            border-radius: 3px;
+        }
+
+        .transition {
+            transition: .5s;
+        }
+
+        /* ------------------------nav起始---- */
+        nav {
+            color: #555;
+            display: flex;
+            height: 120px;
+            justify-content: space-between;
+        }
+
+        nav img {
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logoline {
+            border-bottom: 2px solid #a50000;
+            flex-grow: 1;
+            margin-bottom: 46px;
+        }
+
+        nav>ul {
+            border-top: 2px solid #a50000;
+            margin-top: 72px;
+            display: flex;
+        }
+
+        nav>ul li {
+            margin: 10px 15px;
+        }
+
+        .linegroup {
+            width: 80px;
+            height: 100px;
+            padding: 5px;
+            padding-top: 50px;
+        }
+
+        nav>ul li:hover .downmenu1 {
+            transform: scaleY(1);
+        }
+
+        .downmenu1 {
+            width: 80px;
+            top: 15px;
+            left: -60px;
+            z-index: 1;
+            transform: scaleY(0);
+        }
+
+        .downmenu1 a {
+            color: #fff;
+            padding: 7px 8px;
+            display: block;
+            background: #a50000;
+            width: 80px;
+        }
+
+        .rwd_menu {
+            display: none;
+        }
+
+        @media screen and (max-width:1024px) {
+            .downmenu1 {
+                left: -20px;
+            }
+        }
+
+        @media screen and (max-width:576px) {
+            nav ul, nav li{
+                margin: 0;
+                padding: 0;
+            }
+            nav>ul {
+                display: none;
+            }
+
+            .linegroup {
+                display: none;
+            }
+
+            .rwd_menu {
+                display: block;
+                color: #000;
+                font-size: 20px;
+                padding: 10px;
+                margin-top: 15px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .rwd_menucontent {
+                width: 300px;
+                height: 320px;
+                background: #a500009f;
+                z-index: 15;
+                right: -400px;
+                top: 58px;
+            }
+
+            .rwd_menucontent ul li a {
+                display: block;
+                padding: 20px 0;
+                color: #fff;
+            }
+        }
+
+        /* ------------------header起始---- */
+
+        /* ------------------------section起始---- */
+        .news {
+            margin-top: 50px;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .line {
+            width: 50px;
+            border-top: 3px solid #a50000;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+
+        .news1 {
+            width: 300px;
+            height: 300px;
+            margin: 10px 30px;
+            /* background: #ddd; */
+            border: 1px solid #a50000;
+            overflow: hidden;
+        }
+
+        .news1:hover img {
+            opacity: 1;
+        }
+
+        .news1:hover h3 {
+            transform: translateY(-200px);
+        }
+
+        .news1 img {
+            max-width: 100%;
+            object-fit: cover;
+            opacity: .2;
+            filter: contrast(.5);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .news1 h3 {
+            color: #000;
+            position: absolute;
+            width: 300px;
+        }
+
+        .news_outside {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .briefPopUp-modal img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        .rwdnews1 {
+                display: none;
+            }
+        @media screen and (max-width:576px) {
+            .briefPopUp-modal {
+                display: none;
+            }
+
+            .briefPopUp {
+                display: none;
+            }
+
+            .rwdnews1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+            .news1:hover img {
+            opacity: .2;
+            }
+
+            .news1:hover h3 {
+            transform: translateY(0px);
+            }
+        }
+
+        /* -------------------footer起始---- */
+        footer {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer p {
+            border-top: 1px solid #a50000;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="m-width margin-auto">
+            <a href="indexv0.1.html"><img src="images/logo.jpg" alt=""></a>
+            <div class="logoline text-center"></div>
+            <ul>
+                <li class="position-relative">
+                    <a href="indexv0.1.html">Fun桌尚</a>
+                    <ul class="downmenu1 position-absolute transition">
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                    </ul>
+                </li>
+                <li class="position-relative">
+                    <a href="story-fv1.0.html">桌遊故事</a>
+                </li>
+                <li class="position-relative">
+                    <a href="boardv1.0.html">店內桌遊</a>
+                </li>
+                <li><a href="mapv1.0.html">營業資訊</a></li>
+            </ul>
+            <div class="linegroup position-relative">
+                <img src="images/line-qrcode.jpg" alt="">
+                <!-- 加入Line粉絲群 -->
+            </div>
+            <div class="rwd_menu position-relative">
+                <a id="rwd_menu"><i class="fas fa-bars"></i></a>
+                <div class="rwd_menucontent position-absolute border-radius transition" id="rwd_menucontent">
+                    <ul>
+                        <li class="position-relative"><a href="indexv0.1.html">Fun桌尚</a></li>
+                        <li><a href="newsv1.0.html">最新消息</a></li>
+                        <li class="position-relative"><a href="story-fv1.0.html">桌遊故事</a></li>
+                        <li class="position-relative">
+                            <a href="boardv1.0.html">店內桌遊</a>
+                        </li>
+                        <li><a href="mapv1.0.html">營業資訊</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </nav>
+        <header class="">
+        </header>
+        <section class="m-width margin-auto">
+            <div class="text-center news">
+                <h2>最新消息</h2>
+                <div class="line margin-auto"></div>
+            </div>
+            <div class="news_outside d-flex m-width">
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news2">
+                    <div class="news1 text-center border-radius position-relative">
+                        <h3 class="transition">FUN桌尚跨年預約公告</h3>
+                        <img class="transition" src="images/news2zoom.jpg" alt="">
+                    </div>
+                </a>
+                <div id="news2" class="briefPopUp-modal">
+                    <h3>FUN桌尚跨年預約公告</h3>
+                    <img src="images/news2zoom.jpg" alt="">
+                    <a class="close-briefPopUp-modal">&#215;</a>
+                </div>
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news1">
+                    <div class="news1 text-center border-radius position-relative transition">
+                        <h3 class="transition">FUN桌尚包場公告<br>
+                            12/1(六)14:00-17:00
+                        </h3>
+                        <img class="transition" src="images/news1zoom.jpg" alt="">
+                    </div>
+                </a>
+                <div id="news1" class="briefPopUp-modal">
+                    <h3>FUN桌尚包場公告</h3>
+                    <img src="images/news1zoom.jpg" alt="">
+                    <a class="close-briefPopUp-modal">&#215;</a>
+                </div>
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news3">
+                    <div class="news1 text-center border-radius position-relative transition">
+                        <h3 class="transition">FUN桌尚-快閃飲品<br>
+                            一日限定：枸杞紅棗養生飲
+                        </h3>
+                        <img class="transition smallimg" src="images/news3.jpg" alt="">
+                    </div>
+                </a>
+                <div id="news3" class="briefPopUp-modal">
+                    <h3>FUN桌尚-快閃飲品</h3>
+                    <img src="images/news3.jpg" alt="">
+                    <p>一日限定：枸杞紅棗養生飲$20<br>
+                        (建議溫熱或常溫飲用)<br>
+
+                        立冬已過，象徵冬季自此開始，<br>
+                        ，不知道大家有沒有好好補冬過<br>
+                        了呢？再來沒多久，就要迎來<br>
+                        小雪了~<br>
+                        <br>
+                        還沒補冬的朋友也別煩惱，FUN桌尚<br>
+                        今日為大家準備溫潤的養生飲品。<br>
+                        <br>
+                        本日前來的朋友，都會獲贈小杯試飲。<br>
+                        若試飲後還想再喝，單杯售價為$20<br>
+                        (350c.c.)<br>
+                        只有今天才有喔~~^^<br>
+                        <br>
+                        24節氣小知識<br>
+                        立冬：冬季的開始。立冬補冬，多吃<br>
+                        溫熱補益的食物。冬後飲食可以適當<br>
+                        厚重，食材以滋陰為主。因此，冬季<br>
+                        宜多喝溫水，養陰的同時還可以潤燥<br>
+                        <br>
+                        小雪：氣溫開始降低，飲食宜補溫益腎<br>
+                        ，禦寒保暖。</p>
+                    <a class="close-briefPopUp-modal">&#215;</a>
+                </div>
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news4">
+                    <div class="news1 text-center border-radius position-relative transition">
+                        <h3 class="transition">FUN桌尚 公告<br>
+                            11/12營業時間提前至19:00結束
+                        </h3>
+                        <img class="transition smallimg" src="images/news4.jpg" alt="">
+                    </div>
+                </a>
+                <div id="news4" class="briefPopUp-modal">
+                    <h3>FUN桌尚 公告</h3>
+                    <img src="images/news5.jpg" alt="">
+                    <p>親愛的各位朋友：<br>
+                        因有臨時事務急需處理。<br>
+                        故今日營業時間提前至<br>
+                        19:00結束。<br>
+                        隔日即恢復往常營業<br>
+                        時間，造成不便，敬<br>
+                        請見諒。</p>
+                    <a class="close-briefPopUp-modal">&#215;</a>
+                </div>
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news5">
+                    <div class="news1 text-center border-radius position-relative transition">
+                        <h3 class="transition">FUN桌尚-快閃飲品<br>
+                            一日限定：紅棗桂花養生飲
+                        </h3>
+                        <img class="transition smallimg" src="images/news5.jpg" alt="">
+                    </div>
+                </a>
+                <div id="news5" class="briefPopUp-modal">
+                    <h3>FUN桌尚-快閃飲品</h3>
+                    <img src="images/news5.jpg" alt="">
+                    <p>一日限定：紅棗桂花養生飲$20<br>
+                        (建議溫熱或常溫飲用)<br>
+                        <br>
+                        時過寒露，將迎霜降。天氣日漸轉涼<br>
+                        ，FUN桌尚今日為大家準備了溫暖的<br>
+                        養生飲品。<br>
+                        <br>
+                        本日前來的朋友，都會獲贈小杯試飲。<br>
+                        若試飲後還想再喝，單杯售價為$20(350c.c.)<br>
+                        只有今天才有喔~~^^<br>
+                        <br>
+                        24節氣小知識<br>
+                        寒露：陰曆8月29，露水已寒，將要<br>
+                        結冰。養生重點是養陰防燥、潤肺<br>
+                        益胃。<br>
+                        [圖片來源：Q博士]</p>
+                    <a class="close-briefPopUp-modal">&#215;</a>
+                </div>
+                <a href="#" class="briefPopUp" data-briefPopUp-id="news6">
+                    <div class="news1 text-center border-radius position-relative transition">
+                        <h3 class="transition">FUN桌尚臨時店休公告<br>
+                            10/12 店休
+                        </h3>
+                        <img class="transition smallimg" src="images/news4.jpg" alt="">
+                    </div>
+                </a>
+            </div>
+            <div id="news6" class="briefPopUp-modal">
+                <h3>FUN桌尚臨時店休公告</h3>
+                <img src="images/news4.jpg" alt="">
+                <p>因店長家中臨時有要事，急需處理。今日緊急店休一日。
+                    造成不便，敬請見諒。</p>
+                <a class="close-briefPopUp-modal">&#215;</a>
+            </div>
+            <div class="rwdnews1">
+                <div class="news1 text-center border-radius position-relative">
+                    <h3 class="transition">FUN桌尚跨年預約公告</h3>
+                    <img class="transition" src="images/news2zoom.jpg" alt="">
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">FUN桌尚包場公告<br>
+                        12/1(六)14:00-17:00
+                    </h3>
+                    <img class="transition" src="images/news1zoom.jpg" alt="">
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">FUN桌尚-快閃飲品<br>
+                        一日限定：枸杞紅棗養生飲
+                    </h3>
+                    <img class="transition smallimg" src="images/news3.jpg" alt="">
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">FUN桌尚 公告<br>
+                        11/12營業時間提前至19:00結束
+                    </h3>
+                    <img class="transition smallimg" src="images/news4.jpg" alt="">
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">FUN桌尚-快閃飲品<br>
+                        一日限定：紅棗桂花養生飲
+                    </h3>
+                    <img class="transition smallimg" src="images/news5.jpg" alt="">
+                </div>
+                <div class="news1 text-center border-radius position-relative transition">
+                    <h3 class="transition">FUN桌尚臨時店休公告<br>
+                        10/12 店休
+                    </h3>
+                    <img class="transition smallimg" src="images/news4.jpg" alt="">
+                </div>
+
+            </div>
+        </section>
+        <footer class="text-center">
+            <p>2018 © Rita Jhong </p>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery.popup.js"></script>
+
+    <script>
+        $("#rwd_menu").click(function(){
+            var menusli = $(".rwd_menucontent").css("right","-300px");
+            var menuWidth = $(".rwd_menucontent").width();
+            // console.log("menuWidth");
+            if( menuWidth == 200 ){
+                $(".rwd_menucontent").css("right","0").css("width","199.9px");
+            }else{
+                menusli.css("width","200px");
+            }
+        });
+    </script>
+</body>
+
+</html>
