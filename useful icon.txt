@@ -1,5 +1,0 @@
-方框黑底 facebook
-定位點+地圖版 map-marked-alt
-電話筒 phone
-單線箭頭 < angle-left
-	> angle-right
